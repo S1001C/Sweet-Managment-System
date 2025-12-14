@@ -5,14 +5,9 @@ The project follows clean architecture, REST principles, JWT-based authenticatio
 
 ---
 
-## 📦 Project Structure
+## 🔧 Backend
 
-
----
-
-## 🔧 Backend (Completed)
-
-The backend is implemented using **Node.js, Express, and MongoDB**, with full authentication, authorization, and automated tests.
+The backend is implemented using **Node.js, Express, and MongoDB**.
 
 ### Features
 - User registration & login (JWT)
@@ -21,53 +16,26 @@ The backend is implemented using **Node.js, Express, and MongoDB**, with full au
 - Inventory management (purchase & restock)
 - Automated tests with Jest & Supertest
 
-📍 **Backend details:**  
-See [`backend/README.md`](./backend/README.md)
-
 ---
 
-## 🎨 Frontend (Planned)
+## 🎨 Frontend
 
-The frontend will be built using **React** and will include:
-- Login & Registration UI
+The frontend is built using **React (Vite)**.
+
+### Features
+- Login & Registration
 - Sweet listing dashboard
-- Search & filter functionality
-- Purchase flow
-- Admin controls for managing sweets
+- Purchase sweets
+- Admin controls (add / delete sweets)
 
 ---
 
 ## 🧪 Testing
-
-- Backend tests implemented using **Jest & Supertest**
-- Tests cover authentication, authorization, CRUD operations, and inventory logic
-
----
-
-## 🤖 AI Usage
-
-AI tools were used responsibly to:
-- Generate boilerplate code
-- Debug issues
-- Design API structure
-- Improve test coverage
-
-All logic was reviewed, understood, and manually validated.
-
-(Full details in backend README)
+- Backend tested using **Jest & Supertest**
+- Auth, authorization, and inventory covered
 
 ---
 
-## 🚀 Deployment (Planned)
-
-- Backend: Render / Railway
-- Frontend: Vercel / Netlify
-
----
-
-## ✅ Status
-
-- ✅ Backend complete
-- ✅ Tests passing
-- ⏳ Frontend in progress
-- ⏳ Deployment pending
+## 🚀 Deployment
+- Backend: Render
+- Frontend: Vercel
