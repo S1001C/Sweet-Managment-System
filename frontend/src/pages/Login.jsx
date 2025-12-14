@@ -42,56 +42,56 @@
 
 // export default Login;
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
 import { loginUser } from "../api/auth";
 import { useAuth } from "../context/AuthContext";
-import AuthLayout from "../components/AuthLayout";
 
 const Login = () => {
   const { login } = useAuth();
-  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // 🔴 VERY IMPORTANT
 
-  try {
-    const res = await loginUser({ email, password });
-    login(res.token, res.role);
-  } catch (err) {
-    setError("Invalid credentials");
-  }
-};
+    setError("");
 
+    try {
+      const res = await loginUser({ email, password });
+
+      // backend returns { token }
+      login(res.data.token, res.data.role || "USER");
+    } catch (err) {
+      setError("Invalid credentials");
+    }
+  };
 
   return (
-    <AuthLayout>
+    <form onSubmit={handleSubmit}>
       <h2>Login</h2>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      {error && <p style={{ color: "red" }}>{error}</p>}
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
 
-        <button type="submit">Login</button>
-      </form>
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
 
-      <p>
-        Don’t have an account?{" "}
-        <Link to="/register">Sign up</Link>
-      </p>
-    </AuthLayout>
+      <button type="submit">Login</button>
+    </form>
   );
 };
 
 export default Login;
+
