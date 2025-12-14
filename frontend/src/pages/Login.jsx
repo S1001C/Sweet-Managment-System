@@ -53,16 +53,17 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await loginUser({ email, password });
-      login(res.data.token);
-      navigate("/dashboard");
-    } catch {
-      alert("Invalid credentials");
-    }
-  };
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const res = await loginUser({ email, password });
+    login(res.token, res.role);
+  } catch (err) {
+    setError("Invalid credentials");
+  }
+};
+
 
   return (
     <AuthLayout>
